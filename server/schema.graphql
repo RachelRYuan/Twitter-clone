@@ -34,8 +34,8 @@ input PostOrderByUpdatedAtInput {
 type Query {
   allUsers: [User!]!
   draftsByUser(userUniqueInput: UserUniqueInput!): [Post!]
-  feed(orderBy: PostOrderByUpdatedAtInput, searchString: String, skip: Int, take: Int): [Post!]!
   postById(id: Int!): Post
+  users(orderBy: PostOrderByUpdatedAtInput, searchString: String, skip: Int, take: Int): [User!]!
 }
 
 enum SortOrder {

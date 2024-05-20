@@ -51,8 +51,8 @@ builder.queryFields((t) => ({
         where: { id: args.id },
       }),
   }),
-  feed: t.prismaField({
-    type: ['Post'],
+  users: t.prismaField({
+    type: ['User'],
     args: {
       searchString: t.arg.string(),
       skip: t.arg.int(),
@@ -62,25 +62,7 @@ builder.queryFields((t) => ({
       }),
     },
     resolve: (query, parent, args) => {
-      const or = args.searchString
-        ? {
-            OR: [
-              { title: { contains: args.searchString } },
-              { content: { contains: args.searchString } },
-            ],
-          }
-        : {}
-
-      return prisma.post.findMany({
-        ...query,
-        where: {
-          published: true,
-          ...or,
-        },
-        take: args.take ?? undefined,
-        skip: args.skip ?? undefined,
-        orderBy: args.orderBy ?? undefined,
-      })
+      return prisma.user.findMany()
     },
   }),
   draftsByUser: t.prismaField({
