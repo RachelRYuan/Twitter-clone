@@ -2,8 +2,9 @@ import React from 'react'
 import { gql,useMutation } from '@apollo/client'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import * as Yup from 'yup'
-import { useNavigate} from 'react-router-dom'
+import { useNavigate,Link} from 'react-router-dom'
 import { isValidInputTimeValue } from '@testing-library/user-event/dist/utils'
+import TwitterLogo from '../styles/assets/X_logo.svg'
 
 const login_MUTATION = gql`
 mutation login( $email: String!, $password: String!){
@@ -38,7 +39,12 @@ const validationSchema = Yup.object({
 
   return (
     <div>
-      <h1> Login </h1>
+      <img src = {TwitterLogo}
+      alt = 'logo'
+      style = {{width: "80px "}}
+      className = "logo"
+    />
+      <h3> Login to Fake Twitter</h3>
       <Formik
       initialValues = {initialValues}
       validationSchema = {validationSchema}
@@ -57,10 +63,14 @@ const validationSchema = Yup.object({
           <ErrorMessage name = "email" component = {"div"} />
           <Field name = "password" type = "text" placeholder = "Password"/>
           <ErrorMessage name = "password" component = {"div"} />
-          <button type = 'submit'> Login </button>
+          <button type = 'submit' className='login-button'> <span>Log in</span> </button>
         </Form>
 
     </Formik>
+    <div className="register">
+      <h4> Don't have an account?</h4>
+      <Link to = "/signup"> Sign up </Link>
+    </div>
     </div>
   )
 }
