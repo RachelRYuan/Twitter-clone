@@ -12,17 +12,26 @@ model User {
   email    String  @unique
   password String
   name     String?
-  posts    Post[]
+  Profile  Profile?
+  tweets    Tweet[]
 }
 
-model Post {
+
+model Profile {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String
+  bio       String?
+  location  String?
+  website   String?
+  avatar    String?
+  userId    Int?     @unique
+  User      User?    @relation(fields: [userId], references: [id])
+}
+
+model Tweet {
+  id        Int          @id @default(autoincrement())
+  createdAt DateTime     @default(now())
   content   String?
-  published Boolean  @default(false)
-  viewCount Int      @default(0)
-  author    User?    @relation(fields: [authorId], references: [id])
+  author    User?        @relation(fields: [authorId], references: [id])
   authorId  Int?
 }
