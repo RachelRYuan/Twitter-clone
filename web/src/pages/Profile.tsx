@@ -1,6 +1,7 @@
 import { gql, useQuery } from '@apollo/client'
 import React from 'react'
 import CreateProfile from '../components/CreateProfile'
+import UpdateProfile from '../components/UpdateProfile'
 
 export const ME_QUERY = gql`
   query ME_QUERY {
@@ -16,19 +17,15 @@ export const ME_QUERY = gql`
 
 function Profile() {
     const {loading,error,data} = useQuery(ME_QUERY)
-    console.log('Loading:', loading);
-    console.log('Error:', error);
-    console.log('Data:', data);
     if (loading) return <p>loading</p>
     if (error) return <p>{error.message}</p>
   return (
     <div className="container">
           <h1>Profile</h1>
-          <CreateProfile />
-            {/* <p>{data.me.Profile.id}</p>
-            <p>{data.me.Profile.bio}</p>
-            <p>{data.me.Profile.location}</p>
-            <p>{data.me.Profile.website}</p> */}
+            {data.profile.id? <UpdateProfile/> : <CreateProfile/>}
+            <p>{data.profile.bio}</p>
+            <p>{data.profile.location}</p>
+            <p>{data.profile.website}</p> 
         </div>
   )
 }
