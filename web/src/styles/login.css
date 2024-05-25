@@ -90,3 +90,55 @@ a {
 	text-align: center;
 	color: #000000; 
 }
+
+/* 确保所有输入框样式一致 */
+input,
+textarea {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1px;
+  border-color: var(--main-color);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-bottom: 27px;
+  background-color: #333333;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5); /* 修改占位符颜色 */
+}
+
+.main .center .btn-sign-up {
+  display: block;
+  margin-bottom: 15px;
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
+  color: #fff;
+  border-radius: 100px;
+  padding: 6px 16px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.btn-login {
+  background-color: #fff;
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+  border-radius: 100px;
+  padding: 12px;
+  font-size: 14px;
+  width: auto;
+  font-weight: bold;
+}
+
+.btn-login:hover {
+  background-color: #eaf5fd;
+  color: var(--main-color);
+}
