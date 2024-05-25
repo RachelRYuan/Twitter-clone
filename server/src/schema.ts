@@ -41,6 +41,18 @@ const Query = objectType({
       },
     })
 
+    t.nullable.field('profile', {
+      type: 'Profile',
+      resolve: (parent, args, context: Context) => {
+        const userId = getUserId(context)
+        return context.prisma.profile.findUnique({
+          where: {
+            userId: Number(userId),
+          },
+        })
+      },
+    })
+
     // t.nullable.field('postById', {
     //   type: 'Post',
     //   args: {

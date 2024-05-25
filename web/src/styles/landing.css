@@ -18,13 +18,13 @@
   }
   
   .main .left {
-    background: #000000; /* 黑色背景 */
+    background: #000000;
     background-size: cover;
     display: flex;
   }
   
   .main .left .items-wrapper {
-    color: #ffffff; /* 白色文字 */
+    color: #ffffff; 
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -57,9 +57,9 @@
   .main .center .btn-sign-up {
     display: block;
     margin-bottom: 15px;
-    background-color: var(--main-color); /* 主色调 */
+    background-color: var(--main-color); 
     border: 1px solid var(--main-color);
-    color: #ffffff; /* 白色文字 */
+    color: #ffffff; 
     border-radius: 100px;
     padding: 6px 16px;
     text-align: center;
@@ -78,9 +78,9 @@
   }
   
   .btn-login {
-    background-color: #ffffff; /* 白色背景 */
+    background-color: #ffffff; 
     border: 1px solid var(--main-color);
-    color: var(--main-color); /* 主色调 */
+    color: var(--main-color); 
     border-radius: 100px;
     padding: 12px;
     font-size: 14px;
@@ -89,7 +89,7 @@
   }
   
   .btn-login:hover {
-    background-color: #eaf5fd; /* 浅蓝色背景 */
-    color: var(--main-color); /* 主色调 */
+    background-color: #eaf5fd; 
+    color: var(--main-color); 
   }
   

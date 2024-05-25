@@ -37,6 +37,7 @@ type Profile {
 
 type Query {
   me: User
+  profile: Profile
   users: [User!]!
 }
 
