@@ -194,6 +194,27 @@ const Mutation = objectType({
 				})
 			}
 		})
+    t.field("updateProfile", {
+			type: "Profile",
+			args: {
+				id: intArg(),
+				bio: stringArg(),
+				location: stringArg(),
+				website: stringArg(),
+				avatar: stringArg()
+			},
+			resolve: (parent, { id, ...args }, ctx) => {
+
+				return ctx.prisma.profile.update({
+					data: {
+						...args
+					},
+					where: {
+						id: Number(id)
+					}
+				})
+			}
+		})
     // t.field('createDraft', {
     //   type: 'Post',
     //   args: {

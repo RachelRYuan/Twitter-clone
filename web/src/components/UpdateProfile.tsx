@@ -4,10 +4,11 @@ import { ME_QUERY } from '../pages/Profile'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import Modal from "react-modal"
 import { customStyles } from '../styles/CustomModalStyles'
+import { set } from 'react-hook-form'
 
 const UPDATE_PROFILE_MUTATION = gql`
     mutation updateProfile(
-        $id: int!
+        $id: Int!
         $bio: String
         $location: String
         $website: String
@@ -72,7 +73,7 @@ function UpdateProfile() {
         style={customStyles}
       >
 
-      <Formik
+      {/* <Formik
       initialValues = {initialValues}
       // validationSchema = {validationSchema}
       onSubmit = {async(values, {setSubmitting}) =>{
@@ -81,8 +82,30 @@ function UpdateProfile() {
             variables: values
         })
         setSubmitting(false)
-      }}
-    >
+      }} */}
+    {/* > */}
+    <Formik
+          initialValues={initialValues}
+          // validationSchema={validationSchema}
+          onSubmit={async (values, { setSubmitting, resetForm }) => {
+            setSubmitting(true);
+            // try {
+              const result = await updateProfile({ 
+                variables: values 
+              });
+              console.log('Update successful:', result);
+              // alert('Profile updated successfully!');
+              resetForm();
+              closeModal();
+            // } catch (error) {
+            //     console.error("values: ", values)
+            //   console.error('Update failed:', error);
+            //   alert('Profile update failed. Please try again.');
+            // } finally {
+              setSubmitting(false);
+            // }
+          }}
+        >
       <Form>
         <Field name="bio" type="text" as="textarea" placeholder="Bio" />
         <ErrorMessage name="bio" component={"div"} />
