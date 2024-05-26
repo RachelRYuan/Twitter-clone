@@ -1,0 +1,103 @@
+.profile {
+	position: relative;
+	border: 1px solid var(--main-color);
+	border-radius: 10px; 
+	background-color: #000; 
+	color: #fff; 
+	padding: 20px;
+}
+
+.nickname {
+	margin-top: 5px;
+	margin-bottom: 30px;
+}
+
+a {
+	text-decoration: none;
+	color: var(--main-color);
+}
+
+.profile-info {
+	padding-left: 20px;
+	border-bottom: 2px solid var(--main-color); 
+}
+
+.name-title {
+	font-weight: bold;
+	font-size: 20px;
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	color: var(--main-color); 
+}
+
+.name {
+	text-align: left;
+}
+
+.make-profile {
+	display: grid;
+	justify-items: end;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+.description {
+	grid-column: 1/3;
+}
+
+.likes {
+	grid-column: 1;
+}
+
+.back-arrow {
+	margin: 10px;
+	color: var(--main-color);
+}
+
+.date {
+	color: var(--main-color);
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 14px;
+}
+
+.network-stats {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+.profile-head {
+	display: grid;
+	grid-template-columns: 0.5fr 1fr 9fr;
+	border-bottom: 1px solid var(--main-color);
+	margin-left: -20px;
+}
+
+.edit-button {
+	padding: 10px 20px;
+	background-color: #fff;
+	color: var(--main-color);
+	border: 1px solid var(--main-color);
+	font-size: 15px;
+	border-radius: 25px; 
+	transition: background-color 0.3s ease; 
+}
+
+.edit-button:hover {
+	background-color: #1da1f2;
+	color: #fff; 
+}
+
+.edit-button:focus {
+	outline: none;
+}
+
+.followers {
+	display: grid;
+	grid-template-columns: 3fr 3fr 6fr;
+}

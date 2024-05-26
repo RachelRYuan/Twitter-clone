@@ -5,6 +5,7 @@ import * as Yup from 'yup'
 import { useNavigate,Link} from 'react-router-dom'
 import { isValidInputTimeValue } from '@testing-library/user-event/dist/utils'
 import TwitterLogo from '../styles/assets/X_logo.svg'
+import '../styles/login.css'
 
 const SIGNUP_MUTATION = gql`
 mutation signup($name: String, $email: String!, $password: String!){
