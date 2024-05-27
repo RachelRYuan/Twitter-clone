@@ -34,7 +34,7 @@ interface ProfileValues {
 }
 
 function UpdateProfile() {
-  const inputFile = useRef<HTMLInputElement>(null);
+  const inputFile = useRef<HTMLInputElement | null>(null);
   const [image, setImage] = useState('');
   const [imageLoading, setImageLoading] = useState(false);
   const { loading, error, data } = useQuery(ME_QUERY);

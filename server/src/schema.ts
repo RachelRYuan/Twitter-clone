@@ -215,26 +215,47 @@ const Mutation = objectType({
 				})
 			}
 		})
-    // t.field('createDraft', {
-    //   type: 'Post',
-    //   args: {
-    //     data: nonNull(
-    //       arg({
-    //         type: 'PostCreateInput',
-    //       }),
-    //     ),
-    //   },
-    //   resolve: (_, args, context: Context) => {
-    //     const userId = getUserId(context)
-    //     return context.prisma.post.create({
-    //       data: {
-    //         title: args.data.title,
-    //         content: args.data.content,
-    //         authorId: userId,
-    //       },
-    //     })
-    //   },
-    // })
+    
+
+
+    t.field("createTweet", {
+      type: "Tweet",
+      args: {
+        content: stringArg(),
+      },
+      resolve: async (parent, { content }, ctx) => {
+        const userId = getUserId(ctx)
+        if (!userId) throw new Error("Could not authenticate user.")
+        
+        if (content == null) {
+          throw new Error("Content cannot be null or undefined.")
+        }
+
+        const newTweet = await ctx.prisma.tweet.create({
+          data: {
+            content,
+            author: { connect: { id: Number(userId) } },
+          },
+          include: {
+            author: true, 
+          },
+        })
+
+    return {
+      id: newTweet.id,
+      createdAt: newTweet.createdAt,
+      content: newTweet.content || '', 
+      authorId: newTweet.authorId,
+      author: newTweet.author
+        ? {
+            id: newTweet.author.id,
+            email: newTweet.author.email,
+            name: newTweet.author.name,
+          }
+        : { email: '', id: 0, name: null }, 
+    }
+  },
+})
 
     // t.field('togglePublishPost', {
     //   type: 'Post',
