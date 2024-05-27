@@ -5,6 +5,7 @@ import UpdateProfile from '../components/UpdateProfile'
 import { Link, useNavigate } from 'react-router-dom'
 import "../styles/primary.css"
 import "../styles/profile.css"
+import LeftNav from '../components/leftNav'
 
 export const ME_QUERY = gql`
   query ME_QUERY {
@@ -29,7 +30,7 @@ function Profile() {
   return (
     <div className="primary">
       <div className="left">
-        Left Nav
+        <LeftNav/>
       </div>
       <div className="profile">
         <div className="profile-info">
